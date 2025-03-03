@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'install.sh'
 
 jobs:
   upload:
@@ -13,11 +15,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install AWS CLI
+      - name: Update AWS CLI
         run: |
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           unzip awscliv2.zip
-          sudo ./aws/install
+          sudo ./aws/install --update
 
       - name: Configure AWS CLI
         run: |
@@ -31,4 +33,4 @@ jobs:
           aws s3 cp install.sh s3://${{ secrets.SPACES_BUCKET }}/install.sh \
             --endpoint=https://${{ secrets.SPACES_REGION }}.digitaloceanspaces.com \
             --acl public-read \
-            --content-type "text/plain"
+            --content-type "text/x-sh"
