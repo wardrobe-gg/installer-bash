@@ -16,3 +16,12 @@ To install wardrobe using this script, run the command:
 ## Support
 
 For support, join our [discord server](https://discord.gg/XB5Hk3EnDU).
+
+
+## Copyright Notice
+
+© Wardrobe.gg Ltd 2025.
+
+All images hosted on an external CDN URL are not subject to the [LICENSE](/LICENSE). These images, and any characters depicted within them, remain Copyright of Wardrobe.gg Ltd 2025.
+
+All rights reserved.
