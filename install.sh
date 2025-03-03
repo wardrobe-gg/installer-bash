@@ -1,4 +1,8 @@
 #!/bin/bash
+# This is the wardrobe installation script.
+# For platforms Mac and Linux
+# For windows, see the windows installer.
+
 
 
 
