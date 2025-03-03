@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# © Wardrobe.gg Ltd
 # Wardrobe.gg Ltd
 # Company Number: 16272253
 # Registered in England and Wales
