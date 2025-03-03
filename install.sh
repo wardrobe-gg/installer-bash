@@ -2,9 +2,9 @@
 
 # © Wardrobe.gg Ltd 2025
 # Wardrobe.gg Ltd
-# Company Number: 16272253
+# Company Number: 16272253
 # Registered in England and Wales
-# 49 Station Road, Polegate, England, BN26 6EA
+# 49 Station Road, Polegate, England, BN26 6EA
 # https://wardrobe.gg
 
 # For support with this script, join our discord server.
@@ -52,8 +52,6 @@ echo " Support: https://discord.gg/XB5Hk3EnDU"
 echo ""
 echo ""
 
-
-
 # Check if script is run as root, if not, request sudo privileges
 if [ "$EUID" -ne 0 ]; then
     echo " > Uh oh, we need administrator privileges."
@@ -73,15 +71,19 @@ sleep 1
 echo " [@] Preparing to modify hosts file..."
 sleep 1
 
-# Check if the line already exists in hosts file
-if grep -q "# INSERTED BY WARDROBE" /etc/hosts; then
-    echo " [@] Wardrobe is already installed!"
-else
-    # Add the line to hosts file
-    echo "51.68.220.202 s.optifine.net # INSERTED BY WARDROBE" >> /etc/hosts
-    echo " [@] Successfully modified hosts file!"
-fi
+# Create a temporary file
+temp_file=$(mktemp)
 
+# Remove any existing entries containing s.optifine.net and copy other lines
+grep -v "s.optifine.net" /etc/hosts > "$temp_file"
+
+# Add the new entry
+echo "51.68.220.202 s.optifine.net # INSERTED BY WARDROBE" >> "$temp_file"
+
+# Replace the original hosts file with the modified one
+mv "$temp_file" /etc/hosts
+
+echo " [@] Successfully modified hosts file!"
 echo ""
 echo " > Installation complete."
 echo " > Want to check it's working? Visit http://s.optifine.net and see if you end up in narnia ;)"
