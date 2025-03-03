@@ -6,6 +6,9 @@
 # 49 Station Road, Polegate, England, BN26 6EA
 # https://wardrobe.gg
 
+# For support with this script, join our discord server.
+# https://discord.gg/XB5Hk3EnDU
+
 
 # This is the wardrobe installation script.
 # For platforms Mac and Linux
