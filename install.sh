@@ -1,8 +1,15 @@
 #!/bin/bash
+
+# Wardrobe.gg Ltd
+# Company Number: 16272253
+# Registered in England and Wales
+# 49 Station Road, Polegate, England, BN26 6EA
+# https://wardrobe.gg
+
+
 # This is the wardrobe installation script.
 # For platforms Mac and Linux
 # For windows, see the windows installer.
-
 
 
 
