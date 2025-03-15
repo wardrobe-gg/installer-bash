@@ -71,17 +71,29 @@ sleep 1
 echo " [@] Preparing to modify hosts file..."
 sleep 1
 
-# Create a temporary file
+# Backup the original hosts file
+cp /etc/hosts /etc/hosts.wardrobe.bak
+
+# Create a temporary file with proper permissions
 temp_file=$(mktemp)
+chmod 644 "$temp_file"
 
 # Remove any existing entries containing s.optifine.net and copy other lines
-grep -v "s.optifine.net" /etc/hosts > "$temp_file"
+# Using grep with ASCII output to ensure no encoding issues
+grep -v "s.optifine.net" /etc/hosts | LC_ALL=C cat > "$temp_file"
 
-# Add the new entry
-echo "51.68.220.202 s.optifine.net # INSERTED BY WARDROBE" >> "$temp_file"
+# Add the new entry with explicit newline handling
+echo -n "51.68.220.202 s.optifine.net # INSERTED BY WARDROBE" >> "$temp_file"
+echo "" >> "$temp_file"  # Ensure proper line ending
+
+# Ensure the file has the correct permissions before moving
+chmod 644 "$temp_file"
 
 # Replace the original hosts file with the modified one
-mv "$temp_file" /etc/hosts
+cat "$temp_file" > /etc/hosts
+
+# Clean up
+rm "$temp_file"
 
 echo " [@] Successfully modified hosts file!"
 echo ""
