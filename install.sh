@@ -83,8 +83,7 @@ chmod 644 "$temp_file"
 grep -v "s.optifine.net" /etc/hosts | LC_ALL=C cat > "$temp_file"
 
 # Add the new entry with explicit newline handling
-echo -n "51.68.220.202 s.optifine.net # INSERTED BY WARDROBE" >> "$temp_file"
-echo "" >> "$temp_file"  # Ensure proper line ending
+printf "51.68.220.202 s.optifine.net # INSERTED BY WARDROBE\n" >> "$temp_file"
 
 # Ensure the file has the correct permissions before moving
 chmod 644 "$temp_file"
